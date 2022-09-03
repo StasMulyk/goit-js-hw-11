@@ -5,7 +5,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { scroll } from './scroll';
-let simpleLightBox;
+let simpleLightBox = new SimpleLightbox('.gallery a');
 
 const searchForm = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
@@ -37,7 +37,7 @@ function onSearchForm(e) {
         alertNoQueryMatch();
       } else {
         renderGallery(data.hits);
-        simpleLightBox = new SimpleLightbox('.gallery a').refresh();
+        simpleLightBox.refresh();
         alertImagesFound(data);
 
         if (data.totalHits > perPage) {
@@ -58,7 +58,7 @@ function onLoadMoreBtn() {
 
       const totalPages = Math.ceil(data.totalHits / perPage);
 
-      simpleLightBox = new SimpleLightbox('.gallery a').refresh();
+      simpleLightBox.refresh();
       if (page === totalPages) {
         loadMoreBtn.classList.add('is-hidden');
         alertEndOfGalary();
