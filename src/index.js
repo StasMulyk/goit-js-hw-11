@@ -50,7 +50,7 @@ function onSearchForm(e) {
 
 function onLoadMoreBtn() {
   page += 1;
-  simpleLightBox.destroy();
+  // simpleLightBox.destroy();
 
   fetchImages(query, page, perPage)
     .then(({ data }) => {
